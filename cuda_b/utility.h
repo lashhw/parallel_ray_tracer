@@ -4,9 +4,10 @@
 #include <curand_kernel.h>
 #include "../common/constants.h"
 
-const int BLOCK_SIZE_X = 1;
-const int BLOCK_SIZE_Y = 1;
-const int BLOCK_SIZE_Z = 64;
+const int BLOCK_SIZE = 64;
+const int IMAGE_WIDTH = 600;
+const int IMAGE_HEIGHT = 600;
+const int NUM_PIXELS = IMAGE_WIDTH * IMAGE_HEIGHT;
 
 #define CHECK_CUDA(val) check_cuda( (val), #val, __FILE__, __LINE__ )
 void check_cuda(cudaError_t result, const char* func, const char* file, int line) {
