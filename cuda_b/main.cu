@@ -98,7 +98,7 @@ int main() {
     CHECK_CUDA(cudaMalloc(&d_framebuffer, NUM_PIXELS * sizeof(vec3_t)));
     init_kernel<<<(NUM_PIXELS + BLOCK_SIZE - 1) / BLOCK_SIZE, BLOCK_SIZE>>>(d_framebuffer);
     CHECK_CUDA(cudaGetLastError());
-    render_kernel<<<(NUM_PIXELS * SAMPLES_PER_PIXEL + BLOCK_SIZE - 1), BLOCK_SIZE>>>(d_camera, d_scene, d_framebuffer);
+    render_kernel<<<(NUM_PIXELS * SAMPLES_PER_PIXEL + BLOCK_SIZE - 1) / BLOCK_SIZE, BLOCK_SIZE>>>(d_camera, d_scene, d_framebuffer);
     CHECK_CUDA(cudaGetLastError());
 
     // write framebuffer to file
